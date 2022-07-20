@@ -5,7 +5,7 @@
  *
  * to
  *
- *   import Lib from 'lib';
+ *   import * as Lib from 'lib';
  *
  * Only on global context
  */
@@ -83,7 +83,7 @@ function transformer(file, api, options) {
                 } else if (isRequire) {
                     if (declaration.id.type === "Identifier") {
                         // default import
-                        const importSpecifier = j.importDefaultSpecifier(declaration.id);
+                        const importSpecifier = j.importNamespaceSpecifier(declaration.id);
                         const sourcePath = declaration.init.arguments.shift();
                         if (declaration.init.arguments.length) {
                             logger.error(
